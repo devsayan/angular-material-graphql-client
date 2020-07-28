@@ -1,0 +1,25 @@
+<form class="example-form">
+  <table cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field >
+          <mat-label>Name</mat-label>
+          <input matInput type="text" [(ngModel)]="pokemon.name" name="Name">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <mat-label>Type</mat-label>
+          <input matInput type="text" [(ngModel)]="pokemon.type" name="Type">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <button mat-raised-button color="accent" (click)="savePokemonDetails()">Save</button>
+      </td>
+    </tr>
+  </table>
+</form>

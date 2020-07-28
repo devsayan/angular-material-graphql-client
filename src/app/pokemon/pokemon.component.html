@@ -1,0 +1,10 @@
+<div>
+  <span>{{pokemon.name}} (#{{pokemon.id}}) </span>
+  <button mat-icon-button (click)="isDetailsShown=!isDetailsShown" class="details_button">
+    <mat-icon aria-hidden="false" aria-label="close">edit</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="isDetailsShown">
+  <app-pokemon-details [pokemonId]="pokemon.id"></app-pokemon-details>
+</div>
