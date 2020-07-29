@@ -28,16 +28,6 @@
     </form>
   </div>
 
-  <!--
-    <mat-grid-list cols="3" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let p of pokemon">
-      <app-pokemon [pokemon]="p"></app-pokemon>
-      <button mat-icon-button (click)="openDialog(p.id)" class="removeButton">
-        <mat-icon aria-hidden="false" aria-label="close">delete_outline</mat-icon>
-      </button>
-    </mat-grid-tile>
-  </mat-grid-list>
-  -->
   <div class="pokemon-container" fxLayout="row wrap" fxLayoutAlign="start center" >
     <div *ngFor="let p of pokemon">
       <app-pokemon [pokemon]="p" (pokemonDeleted)="removePokemon($event)"></app-pokemon>
