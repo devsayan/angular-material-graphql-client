@@ -1,6 +1,9 @@
-mat-grid-tile {
-  background: lightblue;
-}
+
 :host {
  padding: 20px 50px;
+}
+
+.pokemon-container {
+  padding: 8px;
+  max-width: 1000px;
 }

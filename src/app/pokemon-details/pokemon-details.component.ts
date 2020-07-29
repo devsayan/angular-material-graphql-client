@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
@@ -11,6 +11,10 @@ export class PokemonDetailsComponent implements OnInit {
 
   @Input()
   pokemonId: number;
+
+  @Output()
+  savePokemonClicked = new EventEmitter<void>();
+
   pokemon: any;
 
   constructor(private apollo: Apollo) { }
@@ -63,6 +67,7 @@ export class PokemonDetailsComponent implements OnInit {
     }).subscribe(result => {
       const data: any = result.data as any;
       this.pokemon = data.updatePokemon;
+      this.savePokemonClicked.emit();
     });
   }
 }

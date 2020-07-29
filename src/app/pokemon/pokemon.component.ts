@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
 
 @Component({
   selector: 'app-pokemon',
@@ -8,11 +10,21 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class PokemonComponent {
 
   @Input() pokemon: any = { };
-  isMouseOver = false;
 
   isDetailsShown = false;
 
   @Output() pokemonDeleted = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private matDialog: MatDialog) { }
+
+  openDialog(pokemonId: number) {
+    const dialogRef = this.matDialog.open(ModalDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        // pokemon is to be deleted
+        this.pokemonDeleted.emit(pokemonId);
+      }
+    });
+  }
 }

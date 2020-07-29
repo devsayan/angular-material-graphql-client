@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-
-import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +15,7 @@ export class AppComponent implements OnInit {
   newPokemonType = '';
   isAddingPokemon = false;
 
-  constructor(private apollo: Apollo, private matDialog: MatDialog) { }
+  constructor(private apollo: Apollo) { }
 
   ngOnInit() {
     this.getPokemons();
@@ -40,6 +37,7 @@ export class AppComponent implements OnInit {
             pokemon {
               id
               name
+              type
             }
           }
         `,
@@ -77,21 +75,6 @@ export class AppComponent implements OnInit {
       this.newPokemonType = '';
       this.getPokemons();
     });
-  }
-
-  openDialog(pokemonId: number){
-    const dialogRef = this.matDialog.open(ModalDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
-        // pokemon is to be deleted
-        this.removePokemon(pokemonId);
-      }
-    });
-  }
-
-  openDetailsDialog(pokemonId: number) {
-
   }
 
   removePokemon(pokemonId: number){

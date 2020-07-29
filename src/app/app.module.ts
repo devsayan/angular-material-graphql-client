@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
@@ -35,7 +37,9 @@ import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.compo
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    MatGridListModule
+    MatGridListModule,
+    FlexLayoutModule,
+    MatCardModule
   ],
   providers: [{
     provide: APOLLO_OPTIONS,
@@ -49,6 +53,7 @@ import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.compo
     },
     deps: [HttpLink]
   }],
+  entryComponents: [ ModalDialogComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
